@@ -12,21 +12,22 @@ class CityController extends Controller
     private CityRepositoryInterface $cityRepository;
 
     public function __construct(
-
-        BoardingHouseRepositoryInterface $boardingHouseRepository,
-        CityRepositoryInterface $cityRepository
+        BoardingHouseRepositoryInterface $boardingHouseRepository,   // Mengelola data boarding house
+        CityRepositoryInterface $cityRepository,                     // Mengelola data kota
     ) {
-
         $this->boardingHouseRepository = $boardingHouseRepository;
         $this->cityRepository = $cityRepository;
     }
 
+    /**
+     * handler permintaan untuk menampilkan informasi boarding house di suatu kota, berdasarkan slug kota
+     */
     public function show($slug)
     {
-        $boardingHouses = $this->boardingHouseRepository->getBoardingHouseByCitySlug($slug);
-        $city = $this->cityRepository->getCityBySlug($slug);
+        $boardingHouses = $this->boardingHouseRepository->getBoardingHouseByCitySlug($slug);    // Mengambil data boarding house berdasarkan slug kota
+        $city = $this->cityRepository->getCityBySlug($slug);                                    // Mengambil detail kota berdasarkan slug kota
 
-
-        return view("pages.city.show", compact("city", "boardingHouses"));
+        // Mengirimkan data "boardingHouses", "city" ke file view "pages.city.show"
+        return view("pages.city.show", compact("boardingHouses", "city"));
     }
 }

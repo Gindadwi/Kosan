@@ -2,6 +2,10 @@
 
 namespace App\Interfaces;
 
+// use Filament\Forms\Components\Builder;
+use Illuminate\Database\Eloquent\Builder;
+
+
 interface BoardingHouseRepositoryInterface
 {
     public function getAllBoardingHouses($search = null, $city = null, $category = null);
