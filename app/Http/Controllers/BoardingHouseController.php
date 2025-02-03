@@ -15,7 +15,7 @@ class BoardingHouseController extends Controller
     private CityRepositoryInterface $cityRepository;
     private CategoryRepositoryInterface $categoryRepository;
     private BoardingHouseRepositoryInterface $boardingHouseRepository;
-    
+
     public function __construct(
         CityRepositoryInterface $cityRepository,
         CategoryRepositoryInterface $categoryRepository,
@@ -27,22 +27,29 @@ class BoardingHouseController extends Controller
     }
 
 
-    public function show($slug){
+    public function show($slug)
+    {
         $boardingHouses = $this->boardingHouseRepository->getBoardingHouseBySlug($slug);
-        return view('pages.boarding-house.show', compact('boardingHouse'));
+
+        $boardingHouse = $this->boardingHouseRepository->getBoardingHouseBySlug($slug);
+
+
+        return view('pages.boarding-house.rooms', compact('boardingHouse'));
     }
 
-    public function rooms($slug){
-        $boardingHouses = $this->boardingHouseRepository->getBoardingHouseBySlug($slug);
+    public function rooms($slug)
+    {
+        $boardingHouse = $this->boardingHouseRepository->getBoardingHouseBySlug($slug);
         return view('pages.boarding-house.rooms', compact('boardingHouse'));
     }
 
 
-    public function find(){
+    public function find()
+    {
         $categories = $this->categoryRepository->getAllCategories();
         $popularBoardingHouse = $this->boardingHouseRepository->getAllBoardingHouses();
         $cities = $this->cityRepository->getAllCities();
-        return view('pages.boarding-house.find', compact('categories','cities'));
+        return view('pages.boarding-house.find', compact('categories', 'cities'));
     }
 
 
@@ -54,4 +61,3 @@ class BoardingHouseController extends Controller
         return view('pages.boarding-house.index', compact('boardingHouses'));
     }
 }
-
