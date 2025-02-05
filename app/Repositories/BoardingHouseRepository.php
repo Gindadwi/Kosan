@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\BoardingHouseRepositoryInterface;
 use App\Models\BoardingHouse;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Builder;
 
 

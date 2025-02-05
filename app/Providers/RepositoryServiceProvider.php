@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Interfaces\BoardingHouseRepositoryInterface;
 use App\Interfaces\CategoryRepositoryInterface;
 use App\Interfaces\CityRepositoryInterface;
-use App\Interfaces\TransactionRepository;
+use App\Repositories\TransactionRepository;
 use App\Interfaces\TransactionRepositoryInterface;
 use App\Repositories\CityRepository;
 use App\Repositories\CategoryRepository;

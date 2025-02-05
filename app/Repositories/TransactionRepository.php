@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Interfaces;
+namespace App\Repositories;
 
 use App\Interfaces\TransactionRepositoryInterface;
-
+use App\Models\Transaction;
 
 class TransactionRepository implements TransactionRepositoryInterface
 {
@@ -14,13 +14,12 @@ class TransactionRepository implements TransactionRepositoryInterface
 
     public function saveTransactionDataToSession($data)
     {
-        $transaction = session()->get('transaction', []);
+        $transaction = session()->get("transaction", []);
 
         foreach ($data as $key => $value) {
             $transaction[$key] = $value;
         }
 
-
-        session()->put('transaction', $transaction);
+        session()->put("transaction", $transaction);
     }
 }
